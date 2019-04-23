@@ -1,16 +1,16 @@
 /*
 Navicat MySQL Data Transfer
 
-Source Server         : dy_sms
-Source Server Version : 50515
+Source Server         : localhost_3306
+Source Server Version : 80015
 Source Host           : localhost:3306
-Source Database       : dy_sms
+Source Database       : smstest
 
 Target Server Type    : MYSQL
-Target Server Version : 50515
+Target Server Version : 80015
 File Encoding         : 65001
 
-Date: 2019-04-09 19:41:55
+Date: 2019-04-23 16:13:21
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -197,16 +197,12 @@ CREATE TABLE `sms_logininfor` (
   `msg` varchar(255) DEFAULT '' COMMENT '提示消息',
   `login_time` datetime DEFAULT NULL COMMENT '访问时间',
   PRIMARY KEY (`info_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8 COMMENT='系统访问记录';
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8 COMMENT='系统访问记录';
 
 -- ----------------------------
 -- Records of sms_logininfor
 -- ----------------------------
-INSERT INTO `sms_logininfor` VALUES ('1', 'admin', '127.0.0.1', '内网IP', 'Chrome', 'Windows 10', '0', '登录成功', '2019-03-31 01:34:12');
-INSERT INTO `sms_logininfor` VALUES ('2', 'admin', '127.0.0.1', '内网IP', 'Chrome', 'Windows 10', '0', '登录成功', '2019-03-31 20:49:07');
-INSERT INTO `sms_logininfor` VALUES ('3', 'admin', '127.0.0.1', '内网IP', 'Chrome', 'Windows 10', '0', '登录成功', '2019-03-31 20:57:47');
-INSERT INTO `sms_logininfor` VALUES ('4', 'admin', '127.0.0.1', '内网IP', 'Chrome', 'Windows 10', '0', '登录成功', '2019-03-31 22:28:09');
-INSERT INTO `sms_logininfor` VALUES ('5', 'admin', '127.0.0.1', '内网IP', 'Chrome', 'Windows 10', '0', '登录成功', '2019-03-31 23:09:09');
+INSERT INTO `sms_logininfor` VALUES ('1', 'admin', '127.0.0.1', '内网IP', 'Chrome', 'Windows 7', '0', '登录成功', '2019-04-23 16:12:45');
 
 -- ----------------------------
 -- Table structure for sms_menu
@@ -228,14 +224,12 @@ CREATE TABLE `sms_menu` (
   `update_time` datetime DEFAULT NULL COMMENT '更新时间',
   `remark` varchar(500) DEFAULT '' COMMENT '备注',
   PRIMARY KEY (`menu_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=1064 DEFAULT CHARSET=utf8 COMMENT='菜单权限表';
+) ENGINE=InnoDB AUTO_INCREMENT=1072 DEFAULT CHARSET=utf8 COMMENT='菜单权限表';
 
 -- ----------------------------
 -- Records of sms_menu
 -- ----------------------------
 INSERT INTO `sms_menu` VALUES ('1', '系统管理', '0', '1', '#', 'M', '0', '', 'fa fa-gear', 'admin', '2018-03-16 11:33:00', 'ry', '2018-03-16 11:33:00', '系统管理目录');
-INSERT INTO `sms_menu` VALUES ('2', '系统监控', '0', '2', '#', 'M', '1', '', 'fa fa-video-camera', 'admin', '2018-03-16 11:33:00', 'admin', '2019-04-03 23:02:30', '系统监控目录');
-INSERT INTO `sms_menu` VALUES ('3', '系统工具', '0', '3', '#', 'M', '1', '', 'fa fa-bars', 'admin', '2018-03-16 11:33:00', 'admin', '2019-04-03 20:35:55', '系统工具目录');
 INSERT INTO `sms_menu` VALUES ('100', '用户管理', '1', '1', '/system/user', 'C', '0', 'system:user:view', '#', 'admin', '2018-03-16 11:33:00', 'ry', '2018-03-16 11:33:00', '用户管理菜单');
 INSERT INTO `sms_menu` VALUES ('101', '角色管理', '1', '2', '/system/role', 'C', '0', 'system:role:view', '#', 'admin', '2018-03-16 11:33:00', 'ry', '2018-03-16 11:33:00', '角色管理菜单');
 INSERT INTO `sms_menu` VALUES ('102', '菜单管理', '1', '3', '/system/menu', 'C', '0', 'system:menu:view', '#', 'admin', '2018-03-16 11:33:00', 'ry', '2018-03-16 11:33:00', '菜单管理菜单');
@@ -245,13 +239,6 @@ INSERT INTO `sms_menu` VALUES ('105', '字典管理', '1', '6', '/system/dict', 
 INSERT INTO `sms_menu` VALUES ('106', '参数设置', '1', '7', '/system/config', 'C', '0', 'system:config:view', '#', 'admin', '2018-03-16 11:33:00', 'ry', '2018-03-16 11:33:00', '参数设置菜单');
 INSERT INTO `sms_menu` VALUES ('107', '通知公告', '1', '8', '/system/notice', 'C', '0', 'system:notice:view', '#', 'admin', '2018-03-16 11:33:00', 'ry', '2018-03-16 11:33:00', '通知公告菜单');
 INSERT INTO `sms_menu` VALUES ('108', '日志管理', '1', '9', '#', 'M', '0', '', '#', 'admin', '2018-03-16 11:33:00', 'ry', '2018-03-16 11:33:00', '日志管理菜单');
-INSERT INTO `sms_menu` VALUES ('109', '在线用户', '2', '1', '/monitor/online', 'C', '0', 'monitor:online:view', '#', 'admin', '2018-03-16 11:33:00', 'ry', '2018-03-16 11:33:00', '在线用户菜单');
-INSERT INTO `sms_menu` VALUES ('110', '定时任务', '2', '2', '/monitor/job', 'C', '0', 'monitor:job:view', '#', 'admin', '2018-03-16 11:33:00', 'ry', '2018-03-16 11:33:00', '定时任务菜单');
-INSERT INTO `sms_menu` VALUES ('111', '数据监控', '2', '3', '/monitor/data', 'C', '0', 'monitor:data:view', '#', 'admin', '2018-03-16 11:33:00', 'ry', '2018-03-16 11:33:00', '数据监控菜单');
-INSERT INTO `sms_menu` VALUES ('112', '服务监控', '2', '3', '/monitor/server', 'C', '0', 'monitor:server:view', '#', 'admin', '2018-03-16 11:33:00', 'ry', '2018-03-16 11:33:00', '服务监控菜单');
-INSERT INTO `sms_menu` VALUES ('113', '表单构建', '3', '1', '/tool/build', 'C', '0', 'tool:build:view', '#', 'admin', '2018-03-16 11:33:00', 'ry', '2018-03-16 11:33:00', '表单构建菜单');
-INSERT INTO `sms_menu` VALUES ('114', '代码生成', '3', '2', '/tool/gen', 'C', '0', 'tool:gen:view', '#', 'admin', '2018-03-16 11:33:00', 'ry', '2018-03-16 11:33:00', '代码生成菜单');
-INSERT INTO `sms_menu` VALUES ('115', '系统接口', '3', '3', '/tool/swagger', 'C', '0', 'tool:swagger:view', '#', 'admin', '2018-03-16 11:33:00', 'ry', '2018-03-16 11:33:00', '系统接口菜单');
 INSERT INTO `sms_menu` VALUES ('500', '操作日志', '108', '1', '/monitor/operlog', 'C', '0', 'monitor:operlog:view', '#', 'admin', '2018-03-16 11:33:00', 'ry', '2018-03-16 11:33:00', '操作日志菜单');
 INSERT INTO `sms_menu` VALUES ('501', '登录日志', '108', '2', '/monitor/logininfor', 'C', '0', 'monitor:logininfor:view', '#', 'admin', '2018-03-16 11:33:00', 'ry', '2018-03-16 11:33:00', '登录日志菜单');
 INSERT INTO `sms_menu` VALUES ('1000', '用户查询', '100', '1', '#', 'F', '0', 'system:user:list', '#', 'admin', '2018-03-16 11:33:00', 'ry', '2018-03-16 11:33:00', '');
@@ -300,24 +287,6 @@ INSERT INTO `sms_menu` VALUES ('1042', '日志导出', '500', '4', '#', 'F', '0'
 INSERT INTO `sms_menu` VALUES ('1043', '登录查询', '501', '1', '#', 'F', '0', 'monitor:logininfor:list', '#', 'admin', '2018-03-16 11:33:00', 'ry', '2018-03-16 11:33:00', '');
 INSERT INTO `sms_menu` VALUES ('1044', '登录删除', '501', '2', '#', 'F', '0', 'monitor:logininfor:remove', '#', 'admin', '2018-03-16 11:33:00', 'ry', '2018-03-16 11:33:00', '');
 INSERT INTO `sms_menu` VALUES ('1045', '日志导出', '501', '3', '#', 'F', '0', 'monitor:logininfor:export', '#', 'admin', '2018-03-16 11:33:00', 'ry', '2018-03-16 11:33:00', '');
-INSERT INTO `sms_menu` VALUES ('1046', '在线查询', '109', '1', '#', 'F', '0', 'monitor:online:list', '#', 'admin', '2018-03-16 11:33:00', 'ry', '2018-03-16 11:33:00', '');
-INSERT INTO `sms_menu` VALUES ('1047', '批量强退', '109', '2', '#', 'F', '0', 'monitor:online:batchForceLogout', '#', 'admin', '2018-03-16 11:33:00', 'ry', '2018-03-16 11:33:00', '');
-INSERT INTO `sms_menu` VALUES ('1048', '单条强退', '109', '3', '#', 'F', '0', 'monitor:online:forceLogout', '#', 'admin', '2018-03-16 11:33:00', 'ry', '2018-03-16 11:33:00', '');
-INSERT INTO `sms_menu` VALUES ('1049', '任务查询', '110', '1', '#', 'F', '0', 'monitor:job:list', '#', 'admin', '2018-03-16 11:33:00', 'ry', '2018-03-16 11:33:00', '');
-INSERT INTO `sms_menu` VALUES ('1050', '任务新增', '110', '2', '#', 'F', '0', 'monitor:job:add', '#', 'admin', '2018-03-16 11:33:00', 'ry', '2018-03-16 11:33:00', '');
-INSERT INTO `sms_menu` VALUES ('1051', '任务修改', '110', '3', '#', 'F', '0', 'monitor:job:edit', '#', 'admin', '2018-03-16 11:33:00', 'ry', '2018-03-16 11:33:00', '');
-INSERT INTO `sms_menu` VALUES ('1052', '任务删除', '110', '4', '#', 'F', '0', 'monitor:job:remove', '#', 'admin', '2018-03-16 11:33:00', 'ry', '2018-03-16 11:33:00', '');
-INSERT INTO `sms_menu` VALUES ('1053', '状态修改', '110', '5', '#', 'F', '0', 'monitor:job:changeStatus', '#', 'admin', '2018-03-16 11:33:00', 'ry', '2018-03-16 11:33:00', '');
-INSERT INTO `sms_menu` VALUES ('1054', '任务详细', '110', '6', '#', 'F', '0', 'monitor:job:detail', '#', 'admin', '2018-03-16 11:33:00', 'ry', '2018-03-16 11:33:00', '');
-INSERT INTO `sms_menu` VALUES ('1055', '任务导出', '110', '7', '#', 'F', '0', 'monitor:job:export', '#', 'admin', '2018-03-16 11:33:00', 'ry', '2018-03-16 11:33:00', '');
-INSERT INTO `sms_menu` VALUES ('1056', '生成查询', '114', '1', '#', 'F', '0', 'tool:gen:list', '#', 'admin', '2018-03-16 11:33:00', 'ry', '2018-03-16 11:33:00', '');
-INSERT INTO `sms_menu` VALUES ('1057', '生成代码', '114', '2', '#', 'F', '0', 'tool:gen:code', '#', 'admin', '2018-03-16 11:33:00', 'ry', '2018-03-16 11:33:00', '');
-INSERT INTO `sms_menu` VALUES ('1058', '工程管理', '0', '4', '#', 'M', '0', '', 'fa fa-university', 'admin', '2019-04-03 23:03:25', 'admin', '2019-04-03 23:04:39', '');
-INSERT INTO `sms_menu` VALUES ('1059', '工地管理', '1058', '1', '/construction/workplace', 'C', '0', 'construction:workplace:view', '#', 'admin', '2019-04-03 23:11:08', 'admin', '2019-04-04 00:05:01', '');
-INSERT INTO `sms_menu` VALUES ('1060', '工地查询', '1059', '1', '#', 'F', '0', 'construction:workplace:list', '#', 'admin', '2019-04-03 23:13:28', 'admin', '2019-04-04 00:05:12', '');
-INSERT INTO `sms_menu` VALUES ('1061', '工地添加', '1059', '2', '#', 'F', '0', 'construction:workplace:add', '#', 'admin', '2019-04-03 23:14:24', 'admin', '2019-04-04 00:05:32', '');
-INSERT INTO `sms_menu` VALUES ('1062', '工地删除', '1059', '3', '#', 'F', '0', 'construction:workplace:remove', '#', 'admin', '2019-04-03 23:14:49', 'admin', '2019-04-04 00:05:43', '');
-INSERT INTO `sms_menu` VALUES ('1063', '工地修改', '1059', '4', '#', 'F', '0', 'construction:workplace:edit', '#', 'admin', '2019-04-03 23:15:24', 'admin', '2019-04-04 00:05:55', '');
 
 -- ----------------------------
 -- Table structure for sms_notice
@@ -342,7 +311,6 @@ CREATE TABLE `sms_notice` (
 -- ----------------------------
 INSERT INTO `sms_notice` VALUES ('1', '温馨提醒：2018-07-01 若依新版本发布啦', '2', '新版本内容111111', '0', 'admin', '2018-03-16 11:33:00', 'admin', '2019-04-03 21:07:29', '管理员');
 INSERT INTO `sms_notice` VALUES ('2', '维护通知：2018-07-01 若依系统凌晨维护', '1', '维护内容', '0', 'admin', '2018-03-16 11:33:00', 'ry', '2018-03-16 11:33:00', '管理员');
-INSERT INTO `sms_notice` VALUES ('3', '测试的', '2', '<p>测试</p>', '0', 'admin', '2019-04-03 21:45:09', '', null, null);
 
 -- ----------------------------
 -- Table structure for sms_oper_log
@@ -364,12 +332,14 @@ CREATE TABLE `sms_oper_log` (
   `error_msg` varchar(2000) DEFAULT '' COMMENT '错误消息',
   `oper_time` datetime DEFAULT NULL COMMENT '操作时间',
   PRIMARY KEY (`oper_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8 COMMENT='操作日志记录';
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8 COMMENT='操作日志记录';
 
 -- ----------------------------
 -- Records of sms_oper_log
 -- ----------------------------
-INSERT INTO `sms_oper_log` VALUES ('1', '用户管理', '5', 'com.ruoyi.project.system.user.controller.UserController.export()', '1', 'admin', '研发部门', '/system/user/export', '127.0.0.1', '内网IP', '{\"deptId\":[\"\"],\"parentId\":[\"\"],\"loginName\":[\"\"],\"phonenumber\":[\"\"],\"status\":[\"\"],\"params[beginTime]\":[\"\"],\"params[endTime]\":[\"\"]}', '0', null, '2019-03-31 22:28:45');
+INSERT INTO `sms_oper_log` VALUES ('3', '用户管理', '2', 'com.dengyong.projects.system.user.controller.UserController.editSave()', '1', 'admin', '研发部门', '/system/user/edit', '127.0.0.1', '内网IP', '{\"userId\":[\"1\"],\"deptId\":[\"103\"],\"userName\":[\"admin\"],\"dept.deptName\":[\"研发部门\"],\"phonenumber\":[\"15888888888\"],\"email\":[\"admin@163.com\"],\"loginName\":[\"admin\"],\"sex\":[\"1\"],\"role\":[\"1\"],\"remark\":[\"管理员\"],\"status\":[\"0\"],\"roleIds\":[\"1\"],\"postIds\":[\"1\"]}', '0', null, '2019-04-23 16:09:45');
+INSERT INTO `sms_oper_log` VALUES ('4', '用户管理', '2', 'com.dengyong.projects.system.user.controller.UserController.editSave()', '1', 'admin', '研发部门', '/system/user/edit', '127.0.0.1', '内网IP', '{\"userId\":[\"1\"],\"deptId\":[\"103\"],\"userName\":[\"admin\"],\"dept.deptName\":[\"研发部门\"],\"phonenumber\":[\"15888888888\"],\"email\":[\"admin@163.com\"],\"loginName\":[\"admin\"],\"sex\":[\"1\"],\"role\":[\"1\"],\"remark\":[\"管理员\"],\"status\":[\"0\"],\"roleIds\":[\"1\"],\"postIds\":[\"1\"]}', '0', null, '2019-04-23 16:09:50');
+INSERT INTO `sms_oper_log` VALUES ('5', '通知公告', '3', 'com.dengyong.projects.system.notice.controller.NoticeController.remove()', '1', 'admin', '研发部门', '/system/notice/remove', '127.0.0.1', '内网IP', '{\"ids\":[\"3\"]}', '0', null, '2019-04-23 16:13:00');
 
 -- ----------------------------
 -- Table structure for sms_post
@@ -538,13 +508,12 @@ CREATE TABLE `sms_user` (
   `update_time` datetime DEFAULT NULL COMMENT '更新时间',
   `remark` varchar(500) DEFAULT '' COMMENT '备注',
   PRIMARY KEY (`user_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8 COMMENT='用户信息表';
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8 COMMENT='用户信息表';
 
 -- ----------------------------
 -- Records of sms_user
 -- ----------------------------
-INSERT INTO `sms_user` VALUES ('1', '103', 'admin', '邓勇', '00', 'ry@163.com', '15888888888', '1', '', '29c67a30398638269fe600f73a054934', '111111', '0', '0', '127.0.0.1', '2019-04-06 03:01:39', 'admin', '2018-03-16 11:33:00', 'ry', '2019-04-06 03:01:39', '管理员');
-INSERT INTO `sms_user` VALUES ('2', '105', 'ry', '邓勇', '00', 'ry@qq.com', '15666666666', '1', '', '8e6d98b90472783cc73c17047ddccf36', '222222', '0', '0', '127.0.0.1', '2019-04-03 00:00:53', 'admin', '2018-03-16 11:33:00', 'admin', '2019-04-03 21:41:57', '测试员1111111');
+INSERT INTO `sms_user` VALUES ('1', '103', 'admin', 'admin', '00', 'admin@163.com', '15888888888', '1', '', '29c67a30398638269fe600f73a054934', '111111', '0', '0', '127.0.0.1', '2019-04-23 16:12:45', 'admin', '2018-03-16 11:33:00', 'admin', '2019-04-23 16:12:45', '管理员');
 
 -- ----------------------------
 -- Table structure for sms_user_post
@@ -561,6 +530,9 @@ CREATE TABLE `sms_user_post` (
 -- ----------------------------
 INSERT INTO `sms_user_post` VALUES ('1', '1');
 INSERT INTO `sms_user_post` VALUES ('2', '2');
+INSERT INTO `sms_user_post` VALUES ('3', '2');
+INSERT INTO `sms_user_post` VALUES ('3', '3');
+INSERT INTO `sms_user_post` VALUES ('3', '4');
 
 -- ----------------------------
 -- Table structure for sms_user_role
@@ -578,44 +550,4 @@ CREATE TABLE `sms_user_role` (
 INSERT INTO `sms_user_role` VALUES ('1', '1');
 INSERT INTO `sms_user_role` VALUES ('2', '1');
 INSERT INTO `sms_user_role` VALUES ('2', '2');
-
--- ----------------------------
--- Table structure for sms_user_workplace
--- ----------------------------
-DROP TABLE IF EXISTS `sms_user_workplace`;
-CREATE TABLE `sms_user_workplace` (
-  `user_id` int(11) NOT NULL COMMENT '用户ID',
-  `workplace_id` int(11) NOT NULL COMMENT '工地ID',
-  PRIMARY KEY (`user_id`,`workplace_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='用户与工地关联表';
-
--- ----------------------------
--- Records of sms_user_workplace
--- ----------------------------
-
--- ----------------------------
--- Table structure for sms_workplace
--- ----------------------------
-DROP TABLE IF EXISTS `sms_workplace`;
-CREATE TABLE `sms_workplace` (
-  `workplace_id` int(11) NOT NULL AUTO_INCREMENT COMMENT '工地ID',
-  `workplace_name` varchar(30) NOT NULL COMMENT '工地名称',
-  `workplace_place` varchar(30) NOT NULL COMMENT '工地位置',
-  `workplace_status` char(1) DEFAULT '0' COMMENT '工地状态（1正常 0停用）',
-  `workplace_flag` char(1) DEFAULT '0' COMMENT '删除标志（0代表存在 2代表删除）',
-  `create_user` varchar(64) DEFAULT '' COMMENT '创建者',
-  `create_time` datetime DEFAULT NULL COMMENT '创建时间',
-  `update_user` varchar(64) DEFAULT '' COMMENT '更新者',
-  `update_time` datetime DEFAULT NULL COMMENT '更新时间',
-  `remark` varchar(500) DEFAULT '' COMMENT '备注',
-  `workplace_sort` int(4) NOT NULL COMMENT '工地排序',
-  PRIMARY KEY (`workplace_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8 COMMENT='工地信息表';
-
--- ----------------------------
--- Records of sms_workplace
--- ----------------------------
-INSERT INTO `sms_workplace` VALUES ('1', '测试工地', '湖北武汉1', '0', '2', '邓勇', '2019-04-05 00:42:00', 'admin', '2019-04-05 03:07:58', '', '2');
-INSERT INTO `sms_workplace` VALUES ('2', '测试工地2', '湖北恩施1', '0', '2', 'admin', '2019-04-05 02:20:25', 'admin', '2019-04-06 02:55:45', '测试1', '1');
-INSERT INTO `sms_workplace` VALUES ('3', '测试1', '恩施', '1', '2', 'admin', '2019-04-06 02:56:21', '', null, '', '1');
-INSERT INTO `sms_workplace` VALUES ('4', '测试2', '恩施', '0', '2', 'admin', '2019-04-06 02:56:32', '', null, '', '2');
+INSERT INTO `sms_user_role` VALUES ('3', '2');

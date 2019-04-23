@@ -12,12 +12,12 @@ import org.springframework.boot.autoconfigure.jdbc.DataSourceAutoConfiguration;
  */
 @SpringBootApplication(exclude = { DataSourceAutoConfiguration.class })
 @MapperScan("com.dengyong.projects.*.*.mapper")
-public class SMSApplication
+public class DYApplication
 {
     public static void main(String[] args)
     {
         // System.setProperty("spring.devtools.restart.enabled", "false");
-        SpringApplication.run(SMSApplication.class, args);
+        SpringApplication.run(DYApplication.class, args);
         System.out.println("项目启动成功！");
     }
 }
