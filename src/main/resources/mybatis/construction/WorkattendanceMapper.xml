@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.dengyong.projects.construction.workattendance.mapper.WorkattendanceMapper">
+					
+
+	<resultMap type="Workattendance" id="WorkattendanceResult">
+		<id     property="workattendanceId"       column="workattendance_id"      />
+		<result property="userId"    column="user_id"   />
+		<result property="workattendanceType"  column="workattendance_type"  />
+		<result property="workHour"       column="work_hour"       />
+		<result property="workplaceId"      column="workplace_id"     />
+		<result property="userName"      column="user_name"     />
+		<result property="createUser"     column="create_user"    />
+		<result property="createDate"   column="create_date"  />
+		<result property="updateUser"     column="update_user"    />
+		<result property="updateTime"   column="update_time"  />
+		<result property="remark"       column="remark"       />
+		<association property="user"    column="user_id" javaType="User" resultMap="userResult" />
+		<association property="workplace"    column="workplace_id" javaType="Workplace" resultMap="WorkplaceResult" />
+	</resultMap>
+	
+	<resultMap id="userResult" type="User">
+		<id     property="userId"   column="user_id"     />
+		<result property="userName" column="user_name"   />
+	</resultMap>
+	
+	<resultMap id="WorkplaceResult" type="Workplace">
+		<id     property="workplaceId"   column="workplace_id"     />
+		<result property="workplaceName" column="workplace_name"   />
+	</resultMap>
+	
+	<sql id="selectWorkattendanceVo">
+        select  swa.user_id,su.user_name,swp.workplace_name, swa.create_user,swa.workattendance_id, swa.remark ,swa.workattendance_type,swa.work_hour,swa.create_date
+		from sms_workattendance swa
+		left join  sms_user su on swa.user_id = su.user_id
+		left join  sms_workplace swp on swp.workplace_id = swa.workplace_id 
+			
+    </sql>
+	
+	<insert id="insertWorkattendance">
+		insert into sms_workattendance(user_id, workattendance_type,work_hour,create_user,remark,workplace_id,workplace_name,user_name,create_date) values
+		<foreach item="item" index="index" collection="list" separator=",">
+			(#{item.userId},#{item.workattendanceType},#{item.workHour},#{item.createUser},#{item.remark},#{item.workplaceId},#{item.workplaceName},#{item.userName},sysdate())
+		</foreach>
+	</insert>
+	
+	<select id="selectWorkattendanceList" parameterType="Workattendance" resultMap="WorkattendanceResult">
+	    <include refid="selectWorkattendanceVo"/>
+		<where>
+			<if test="userName != null and userName != ''">
+				AND swa.user_name like concat('%', #{userName}, '%') 
+			</if>
+			<if test="workplaceName != null and workplaceName != ''">
+				AND swa.workplace_name like concat('%', #{workplaceName}, '%')
+			</if>
+			and date(swa.create_date) = date(sysdate())
+		</where>
+	</select>
+	
+	<select id="checkWorkplaceNameUnique" parameterType="String" resultMap="WorkplaceResult">
+		<include refid="selectWorkattendanceVo"/>
+		 where workplace_name=#{workplaceName}
+	</select>
+	
+	
+	<select id="selectWorkattendanceById" parameterType="Long" resultMap="WorkattendanceResult">
+		<include refid="selectWorkattendanceVo"/>
+		where workattendance_id = #{workattendanceId}
+	</select>
+	
+	
+ 	
+ 	<delete id="deleteWorkattendanceByIds" parameterType="Long">
+ 		delete  from sms_workattendance  where workattendance_id in
+ 		<foreach collection="array" item="workattendanceId" open="(" separator="," close=")">
+ 			#{workattendanceId}
+        </foreach> 
+ 	</delete>
+ 	
+ 	<update id="updateWorkattendance" parameterType="Workattendance">
+ 		update sms_workattendance
+ 		<set>
+ 			<if test="workplaceName != null and workplaceName != ''">workplace_name = #{workplaceName},</if>
+ 			<if test="workHour != null and workHour != ''">work_hour = #{workHour},</if>
+ 			<if test="workplaceId != null and workplaceId != ''">workplace_id = #{workplaceId},</if>
+ 			<if test="workattendanceId != null and workattendanceId != ''">workattendance_id = #{workattendanceId},</if>
+ 			<if test="workattendanceType != null and workattendanceType != ''">workattendance_type = #{workattendanceType},</if>
+ 			<if test="updateUser != null and updateUser != ''">update_user = #{updateUser},</if>
+ 			<if test="remark != null and remark != ''">remark = #{remark},</if>
+ 			update_time = sysdate()
+ 		</set>
+ 		where workattendance_id = #{workattendanceId}
+	</update>
+ 	
+ 	<insert id="insertWorkplace" parameterType="Workplace" useGeneratedKeys="true" keyProperty="workplaceId">
+ 		insert into sms_workplace(
+ 			<if test="workplaceName != null and workplaceName != ''">workplace_name,</if>
+ 			<if test="workplacePlace != null and workplacePlace != ''">workplace_place,</if>
+ 			<if test="workplaceSort != null and workplaceSort != ''">workplace_sort,</if>
+ 			<if test="workplaceStatus != null and workplaceStatus != ''">workplace_status,</if>
+ 			<if test="createBy != null and createBy != ''">create_user,</if>
+ 			<if test="remark != null and remark != ''">remark,</if>
+ 			create_time
+ 		)values(
+ 			<if test="workplaceName != null and workplaceName != ''">#{workplaceName},</if>
+ 			<if test="workplacePlace != null and workplacePlace != ''">#{workplacePlace},</if>
+ 			<if test="workplaceSort != null and workplaceSort != ''">#{workplaceSort},</if>
+ 			<if test="workplaceStatus != null and workplaceStatus != ''">#{workplaceStatus},</if>
+ 			<if test="createBy != null and createBy != ''">#{createBy},</if>
+ 			<if test="remark != null and remark != ''">#{remark},</if>
+ 			sysdate()
+ 		)
+	</insert>
+	
+</mapper> 
