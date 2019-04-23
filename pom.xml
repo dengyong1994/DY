@@ -6,9 +6,9 @@
   <artifactId>DY</artifactId>
   <packaging>jar</packaging>
   <version>1.0.0</version>
-  <name>SMS</name>
+  <name>DY</name>
   <url>http://maven.apache.org</url>
-  <description>工地管理系统</description>
+  <description>DY管理系统</description>
   
   <parent>
 		<groupId>org.springframework.boot</groupId>
